@@ -1,20 +1,40 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
-  "timezone": "Asia/Shanghai",
-  "semanticCommits": "enabled",
-  "commitMessagePrefix": "📦 chore(deps):",
   "automerge": true,
+  "automergeSchedule": ["at any time"],
   "automergeStrategy": "rebase",
-  "platformAutomerge": true,
-  "vulnerabilityAlerts": {
-    "enabled": true,
-    "automerge": true
-  },
+  "commitMessagePrefix": "📦 chore(deps):",
+  "extends": ["config:base"],
+  "minimumReleaseAge": "3 days",
   "packageRules": [
     {
-      "matchUpdateTypes": ["major"],
-      "automerge": false
+      "description": "所有 minor 和 patch 依赖打包在一起自动合并，减少 PR 数量",
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch",
+      "matchUpdateTypes": ["minor", "patch"]
+    },
+    {
+      "automerge": false,
+      "matchUpdateTypes": ["major"]
+    },
+    {
+      "description": "不要 windows 0.100，不兼容",
+      "enabled": false,
+      "matchPackageNames": ["windows", "windows-result"]
+    },
+    {
+      "allowedVersions": "<7.0.0 || >=7.1.0",
+      "automerge": true,
+      "description": "跳过 typescript 7.0.x",
+      "matchPackageNames": ["typescript"]
     }
-  ]
+  ],
+  "platformAutomerge": true,
+  "schedule": ["before 10am on monday", "every weekend"],
+  "semanticCommits": "enabled",
+  "timezone": "Asia/Shanghai",
+  "vulnerabilityAlerts": {
+    "automerge": true,
+    "enabled": true
+  }
 }
