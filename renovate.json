@@ -27,6 +27,11 @@
       "automerge": true,
       "description": "跳过 typescript 7.0.x",
       "matchPackageNames": ["typescript"]
+    },
+    {
+      "description": "wasm-bindgen 必须 match wasm-bindgen-cli version",
+      "enabled": false,
+      "matchPackageNames": ["wasm-bindgen"]
     }
   ],
   "platformAutomerge": true,
