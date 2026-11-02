@@ -5,7 +5,7 @@
   "automergeStrategy": "rebase",
   "commitMessagePrefix": "📦 chore(deps):",
   "extends": ["config:base"],
-  "minimumReleaseAge": "3 days",
+  "minimumReleaseAge": "5 days",
   "packageRules": [
     {
       "description": "所有 minor 和 patch 依赖打包在一起自动合并，减少 PR 数量",
@@ -35,7 +35,7 @@
     }
   ],
   "platformAutomerge": true,
-  "schedule": ["before 10am on monday", "every weekend"],
+  "schedule": ["after 3am and before 7am on monday"],
   "semanticCommits": "enabled",
   "timezone": "Asia/Shanghai",
   "vulnerabilityAlerts": {
